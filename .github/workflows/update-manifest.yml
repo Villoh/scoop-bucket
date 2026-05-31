@@ -1,4 +1,4 @@
-name: Update Manifest
+name: Update manifest
 
 on:
   repository_dispatch:
@@ -6,31 +6,40 @@ on:
 
 jobs:
   update:
+    name: Update tunnel-agent manifest
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    permissions:
+      contents: write
 
-      - name: Update tunnel-agent manifest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Update manifest
         env:
           VERSION: ${{ github.event.client_payload.version }}
-          URL: ${{ github.event.client_payload.url }}
-          SHA256: ${{ github.event.client_payload.sha256 }}
+          URL:     ${{ github.event.client_payload.url }}
+          SHA256:  ${{ github.event.client_payload.sha256 }}
         run: |
           jq \
             --arg version "$VERSION" \
-            --arg url "$URL" \
-            --arg hash "$SHA256" \
-            '.version = $version |
-             .architecture["64bit"].url = $url |
-             .architecture["64bit"].hash = $hash |
-             .autoupdate.architecture["64bit"].url = ("https://github.com/Villoh/tunnel-agent/releases/download/v" + $version + "/TunnelAgent-" + $version + "-win-Setup.exe")' \
-            bucket/tunnel-agent.json > tmp.json
-          mv tmp.json bucket/tunnel-agent.json
+            --arg url     "$URL" \
+            --arg sha256  "$SHA256" \
+            '
+              .version = $version |
+              .architecture["64bit"].url  = $url |
+              .architecture["64bit"].hash = $sha256
+            ' \
+            bucket/tunnel-agent.json > /tmp/manifest.json
+          mv /tmp/manifest.json bucket/tunnel-agent.json
+          echo "Updated to $VERSION"
+          cat bucket/tunnel-agent.json
 
       - name: Commit and push
+        env:
+          VERSION: ${{ github.event.client_payload.version }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add bucket/tunnel-agent.json
-          git commit -m "chore: update tunnel-agent to v${{ github.event.client_payload.version }}"
+          git commit -m "chore: update tunnel-agent to $VERSION"
           git push

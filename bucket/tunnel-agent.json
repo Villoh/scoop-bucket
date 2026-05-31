@@ -1,30 +1,41 @@
 {
-  "version": "0.0.0",
-  "description": "A lightweight tunneling agent for local development",
+  "version": "0.4.1",
+  "description": "AI engine proxy for Claude, Codex, Gemini and more.",
   "homepage": "https://github.com/Villoh/tunnel-agent",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/Villoh/tunnel-agent/releases/download/v0.0.0/TunnelAgent-0.0.0-win-Setup.exe",
-      "hash": "0000000000000000000000000000000000000000000000000000000000000000"
+      "url": "https://github.com/Villoh/tunnel-agent/releases/download/v0.4.1/TunnelAgent-0.4.1-win-Setup.exe",
+      "hash": "PLACEHOLDER"
     }
   },
   "installer": {
     "script": [
-      "$installer = \"$dir\\TunnelAgent-$version-win-Setup.exe\"",
-      "Start-Process -FilePath $installer -ArgumentList '/S' -Wait"
+      "& \"$dir\\TunnelAgent-$version-win-Setup.exe\" --silent"
+    ]
+  },
+  "uninstaller": {
+    "script": [
+      "$installDir = \"$env:LOCALAPPDATA\\TunnelAgent\"",
+      "$uninstaller = Get-ChildItem \"$installDir\" -Filter \"Update.exe\" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1",
+      "if ($uninstaller) { & $uninstaller.FullName --uninstall }"
     ]
   },
   "shortcuts": [
-    ["TunnelAgent.exe", "TunnelAgent"]
+    ["$env:LOCALAPPDATA\\TunnelAgent\\TunnelAgent.exe", "Tunnel Agent"]
   ],
   "checkver": {
-    "github": "https://github.com/Villoh/tunnel-agent"
+    "url": "https://github.com/Villoh/tunnel-agent/releases/latest/download/latest.json",
+    "jsonpath": "$.version"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://github.com/Villoh/tunnel-agent/releases/download/v$version/TunnelAgent-$version-win-Setup.exe"
+        "url": "https://github.com/Villoh/tunnel-agent/releases/download/v$version/TunnelAgent-$version-win-Setup.exe",
+        "hash": {
+          "url": "https://github.com/Villoh/tunnel-agent/releases/latest/download/latest.json",
+          "jsonpath": "$.installer.sha256"
+        }
       }
     }
   }
