@@ -13,4 +13,4 @@ scoop install villoh/tunnel-agent
 
 | App | Description |
 |-----|-------------|
-| [tunnel-agent](bucket/tunnel-agent.json) | AI engine proxy for Claude, Codex, Gemini and more |
+| [tunnel-agent](bucket/tunnel-agent.json) | Desktop UI for CLIProxyAPI and Perplexity WebUI Scraper. Manage OAuth providers, API keys and session accounts, then point any coding agent at the local endpoint |
