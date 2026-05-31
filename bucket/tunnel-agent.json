@@ -1,0 +1,31 @@
+{
+  "version": "0.0.0",
+  "description": "A lightweight tunneling agent for local development",
+  "homepage": "https://github.com/Villoh/tunnel-agent",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Villoh/tunnel-agent/releases/download/v0.0.0/TunnelAgent-0.0.0-win-Setup.exe",
+      "hash": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "installer": {
+    "script": [
+      "$installer = \"$dir\\TunnelAgent-$version-win-Setup.exe\"",
+      "Start-Process -FilePath $installer -ArgumentList '/S' -Wait"
+    ]
+  },
+  "shortcuts": [
+    ["TunnelAgent.exe", "TunnelAgent"]
+  ],
+  "checkver": {
+    "github": "https://github.com/Villoh/tunnel-agent"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/Villoh/tunnel-agent/releases/download/v$version/TunnelAgent-$version-win-Setup.exe"
+      }
+    }
+  }
+}
