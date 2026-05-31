@@ -5,27 +5,12 @@
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/Villoh/tunnel-agent/releases/download/v0.4.2/TunnelAgent-win-Setup.exe",
-      "hash": "7963eb7b6adb0b4494957519b3a26eb511fd693910ab6dd955df1f93c8d951bd"
+      "url": "https://github.com/Villoh/tunnel-agent/releases/download/v0.4.2/TunnelAgent-0.4.2-win-x64-portable.zip",
+      "hash": "dfb39a37b5596fac44116fc5d1e01c49bdc9d58f75e80ede69cf6b9fd897118e"
     }
   },
-  "installer": {
-    "script": [
-      "& \"$dir\\TunnelAgent-$version-win-Setup.exe\" --silent"
-    ]
-  },
-  "uninstaller": {
-    "script": [
-      "$installDir = \"$env:LOCALAPPDATA\\TunnelAgent\"",
-      "$uninstaller = Get-ChildItem \"$installDir\" -Filter \"Update.exe\" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1",
-      "if ($uninstaller) { & $uninstaller.FullName --uninstall }"
-    ]
-  },
   "shortcuts": [
-    [
-      "$env:LOCALAPPDATA\\TunnelAgent\\TunnelAgent.exe",
-      "Tunnel Agent"
-    ]
+    ["TunnelAgent.exe", "Tunnel Agent"]
   ],
   "checkver": {
     "url": "https://github.com/Villoh/tunnel-agent/releases/latest/download/latest.json",
@@ -34,10 +19,10 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://github.com/Villoh/tunnel-agent/releases/download/v$version/TunnelAgent-$version-win-Setup.exe",
+        "url": "https://github.com/Villoh/tunnel-agent/releases/download/v$version/TunnelAgent-$version-win-x64-portable.zip",
         "hash": {
           "url": "https://github.com/Villoh/tunnel-agent/releases/latest/download/latest.json",
-          "jsonpath": "$.installer.sha256"
+          "jsonpath": "$.portable.sha256"
         }
       }
     }
