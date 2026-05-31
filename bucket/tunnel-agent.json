@@ -1,6 +1,6 @@
 {
   "version": "0.4.1",
-  "description": "AI engine proxy for Claude, Codex, Gemini and more.",
+  "description": "Desktop UI for CLIProxyAPI and Perplexity WebUI Scraper. Manage OAuth providers, API keys and session accounts, then point any coding agent at the local endpoint.",
   "homepage": "https://github.com/Villoh/tunnel-agent",
   "license": "MIT",
   "architecture": {
