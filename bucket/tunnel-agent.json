@@ -6,7 +6,7 @@
   "architecture": {
     "64bit": {
       "url": "https://github.com/Villoh/tunnel-agent/releases/download/v0.4.5/TunnelAgent-0.4.5-win-x64-portable.zip",
-      "hash": "d6cda1b2b90abf563f3f3e3496feb34272994bcd64225873daa13d393d6e371c"
+      "hash": "621a3231d994be3bc7770e0cd1c06504b4a1bf0c23bc766e5e7e4a6db4aad904"
     }
   },
   "shortcuts": [
