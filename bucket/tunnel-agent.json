@@ -5,8 +5,8 @@
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/Villoh/tunnel-agent/releases/download/v0.6.0/",
-      "hash": ""
+      "url": "https://github.com/Villoh/tunnel-agent/releases/download/v0.6.0/TunnelAgent-win-x64-Portable.zip",
+      "hash": "a0e5f3f89777ea781320f699d18bce950d88be1a2e799a95ceae6063d356e5ef"
     }
   },
   "shortcuts": [
