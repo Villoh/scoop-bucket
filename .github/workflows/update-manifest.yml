@@ -27,7 +27,11 @@ jobs:
             '
               .version = $version |
               .architecture["64bit"].url  = $url |
-              .architecture["64bit"].hash = $sha256
+              .architecture["64bit"].hash = $sha256 |
+              .autoupdate.architecture["64bit"].url =
+                "https://github.com/Villoh/tunnel-agent/releases/download/v$version/TunnelAgent-$version-win-x64-scoop.zip" |
+              .autoupdate.architecture["64bit"].hash.jsonpath =
+                "$.platforms.win-x64.scoop.sha256"
             ' \
             bucket/tunnel-agent.json > /tmp/manifest.json
           mv /tmp/manifest.json bucket/tunnel-agent.json
