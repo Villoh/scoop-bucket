@@ -1,12 +1,12 @@
 {
-  "version": "1.1.11",
+  "version": "1.1.12",
   "description": "Desktop UI for CLIProxyAPI and Perplexity WebUI Scraper. Manage OAuth providers, API keys and session accounts, then point any coding agent at the local endpoint.",
   "homepage": "https://github.com/Villoh/tunnel-agent",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/beyondhumane/tunnel-agent/releases/download/v1.1.11/TunnelAgent-1.1.11-win-x64-scoop.zip",
-      "hash": "52bf4c8d8be3331ef2de19e11ab9824a1edf88f68dda20eba53621bb589f7ecb"
+      "url": "https://github.com/beyondhumane/tunnel-agent/releases/download/v1.1.12/TunnelAgent-1.1.12-win-x64-scoop.zip",
+      "hash": "caca5c658acddf3e8b90fb2434b5308cbdd38b0933f8e6ed1a644e048060a4b5"
     }
   },
   "shortcuts": [
